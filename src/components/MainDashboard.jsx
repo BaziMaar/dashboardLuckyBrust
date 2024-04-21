@@ -37,13 +37,14 @@ const CardContainer = ({ eventData, secondEvent }) => {
     flex: '1',
     marginRight: '10px',
     boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
-    borderRadius: '10px',
+    borderRadius: '0px',
     overflow: 'hidden'
   };
 
   return (
-    <div style={{ margin: '20px', textAlign: 'center' }}>
-      <h2 style={{ color: '#000', fontSize: '30px', marginBottom: '10px' }}>Spin Dashboard</h2>
+    <div style={{ background:'#081A30', color:'lightblue'}}>
+    <div style={{marginTop:'0px', textAlign: 'center', background:'#081A30', color:'lightblue'}}>
+      <h2 style={{ color: 'lightblue', fontSize: '30px', marginBottom: '10px' }}>Spin Dashboard</h2>
       <Card style={{ ...cardStyle, background: 'linear-gradient(135deg, #2980B9, #6DD5FA)' }}>
         <CardContent>
           
@@ -72,14 +73,14 @@ const CardContainer = ({ eventData, secondEvent }) => {
           </CardContent>
         </Card>
       </div>
-      <Card style={{ ...cardStyle, marginTop: '20px', background: '#f8f9fa', padding: '20px', borderRadius: '10px', boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)' }}>
+      <Card style={{ ...cardStyle, marginTop: '20px', background: '#A8FF7A', padding: '20px', borderRadius: '10px', boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)' }}>
         <CardContent>
-          <h3 style={{ color: '#333', fontSize: '20px', marginBottom: '10px' }}>Last Bets</h3>
+          <h3 style={{ color: 'black', fontSize: '20px', marginBottom: '10px' }}>Last Bets</h3>
           <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
             {lastBets.map((bet, index) => (
               <Card key={index} style={{ ...cardStyle, width: '200px', margin: '10px', background: 'linear-gradient(135deg, #98acf8, #cfd9ff)' }}>
                 <CardContent>
-                  <h3 style={{ color: '#333', fontSize: '16px', marginBottom: '10px' }}>Last Bet {index===0?'':index}</h3>
+                  <h3 style={{ color: 'lightblue', fontSize: '16px', marginBottom: '10px' }}>Last Bet {index===0?'':index}</h3>
                   <p style={{ color: '#333', fontSize: '14px', marginBottom: '0' }}>{bet}</p>
                 </CardContent>
               </Card>
@@ -87,6 +88,7 @@ const CardContainer = ({ eventData, secondEvent }) => {
           </div>
         </CardContent>
       </Card>
+    </div>
     </div>
   );
 };

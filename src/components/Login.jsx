@@ -16,7 +16,9 @@ const StyledCard = styled(Card)({
   minWidth: 300,
   padding: '16px',
   borderRadius: '20px',
-  boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1)',
+ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1)',
+ 
+  background:'#ABE5D7'
 });
 
 const StyledForm = styled('form')({
@@ -34,6 +36,7 @@ const StyledTextField = styled(TextField)({
 const StyledButton = styled(Button)(({ theme }) => ({
   marginTop: '16px',
   background: '#001B48',
+  color: '#A8FF7A',
   boxShadow: `0 2px 4px rgba(0, 0, 0, ${theme.palette.mode === 'light' ? 0.2 : 0.4})`,
 }));
 
@@ -66,20 +69,20 @@ const Login = () => {
 
   return (
     <div>
-<header style={{ flex: 'none', textAlign: 'center', padding: '20px', width: '97.4%', position: 'relative', background: '#f0f0f0' }}>
+<header style={{ flex: 'none', textAlign: 'center', padding: '20px', width: '97.4%', position: 'relative', background: '#102339' }}>
   <div style={{ fontWeight: 'bold', fontSize: 'xxx-large', fontFamily: 'monospace', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.2)', color: '#333' }}>
-    <a href="/" style={{ textDecoration: 'none', color: '#001B48' }}>Bazi Maar Dashboard</a>
+    <a href="/" style={{ textDecoration: 'none', color: 'lightblue' }}>Bazi Maar Dashboard</a>
   </div>
 </header>
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh',backgroundColor:'#f0f0f0' }}>
-        <StyledCard>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh',backgroundColor:'#081A30' }}>
+        <StyledCard  >
           <CardContent>
-            <Typography variant="h5" component="h2" gutterBottom>
-              Admin Login
+            <Typography variant="h5" component="h2" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', color:'black'}}  gutterBottom>
+              User Login
             </Typography>
             <br />
             <StyledForm noValidate autoComplete="off">
-              <StyledTextField
+              <StyledTextField style={{color:'lightblue'}}
                 label="👤Username"
                 variant="outlined"
                 value={formData.username}
@@ -108,6 +111,7 @@ const Login = () => {
                 variant="contained"
                 color="primary"
                 onClick={handleLogin}
+                text
               >
                 Login
               </StyledButton>

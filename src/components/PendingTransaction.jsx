@@ -16,6 +16,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import {Link} from 'react-router-dom'
 import Button from '@mui/material/Button';
 import { DataGrid } from '@mui/x-data-grid';
+import CrossIcon from '../assets/cross.svg';
 
 const PendingTransaction = () => {
   const [transactions, setTransactions] = useState([]);
@@ -172,13 +173,12 @@ const PendingTransaction = () => {
   };
   const linkStyle = {
     textDecoration: 'none',
-    color: '#333',
     fontSize: '16px',
     margin: '8px 0',
     display: 'block',
     transition: 'color 0.3s',
-    backgroundColor:'#DADADA',
-    color:'black'
+    backgroundColor:'#081A30',
+    color:'lightblue'
   };
   
   linkStyle[':hover'] = {
@@ -228,8 +228,8 @@ const PendingTransaction = () => {
       {/* Header with Sidebar Button */}
       <header
         style={{
-          backgroundColor: '#F1F1F1',
-          color: 'black',
+          backgroundColor: '#102339',
+          color: 'lightblue',
           textAlign: 'center',
           padding: '10px',
           display: 'flex',
@@ -251,20 +251,25 @@ const PendingTransaction = () => {
       </header>
 
       {/* Sidebar Drawer */}
-      <Drawer
+      <Drawer 
       anchor="left"
       open={isDrawerOpen}
       onClose={toggleDrawer(false)}
+      // style={{background:'#102339'}}
     >
+      <div style={{ textAlign: 'left', padding: '10px', background:'#102339',  }}>
+                <img src={CrossIcon} alt="Hamburger Icon" style={{ width: '25px', height: '25px', cursor: 'pointer', background:'white', borderRadius:'17px'}} onClick={toggleDrawer(false)}/>
+                </div>
       {/* Sidebar content goes here */}
-      <div style={{ width: '250px', padding: '20px', background: '#DADADA' }}>
+      <div style={{  height: '100vh',width: '250px', padding: '20px', background: '#102339'}}>
         {/* List of links in the drawer */}
-        <Link to="/" onClick={() => setDrawerOpen(false)} style={linkStyle}>All Transactions</Link>
-        <Link to="/pending" onClick={() => setDrawerOpen(false)} style={linkStyle}>Pending Withdrawal Requests</Link>
+        <Link to="/transaction" onClick={() => setDrawerOpen(false)} style={linkStyle}>All Transactions</Link>
+        <Link to="/pending" onClick={() => setDrawerOpen(false)} style={linkStyle}>Pending Requests</Link>
         <Link to="/approved" onClick={() => setDrawerOpen(false)} style={linkStyle}>Approved Transactions</Link>
         <Link to="/users" onClick={() => setDrawerOpen(false)} style={linkStyle}>All Users</Link>
-        <Link to="/lastUsers" onClick={() => setDrawerOpen(false)} style={linkStyle}>Last 7 days Users</Link>
-        <Link to="/Stats" onClick={() => setDrawerOpen(false)} style={linkStyle}>Stats</Link>
+        <Link to="/weeklyUsers" onClick={() => setDrawerOpen(false)} style={linkStyle}>Weekly Users</Link>
+        <Link to="/daily" onClick={() => setDrawerOpen(false)} style={linkStyle}>Daily Transactions</Link>
+        <Link to="/week" onClick={() => setDrawerOpen(false)} style={linkStyle}>Weekly Transactions</Link>
       </div>
     </Drawer>
             <DataGrid
@@ -299,21 +304,20 @@ const PendingTransaction = () => {
         }}
         sx={{
           '&.MuiDataGrid-root': {
-            bgcolor: '#DADADA', // Change background color
-            color: 'black',
+            bgcolor: '#081A30', // Change background color
+            color: 'lightblue',
             boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)', // Add shadow
           },
-
           '&.MuiDataGrid-filterIcon': {
-            bgcolor: '#F1F1F1',
-            color: 'black',
+            bgcolor: '#102339',
+            color: 'lightblue',
             borderColor: 'transparent',
           },
           '& .MuiDataGrid-cell, & .MuiDataGrid-colCellTitle': {
-            background:'#DADADA'
+            background:'#102339'
           },
           '.css-78c6dr-MuiToolbar-root-MuiTablePagination-toolbar': {
-            color: '#99E9FA'
+            color: 'lightblue'
             /* Add any other styles you want to apply */
           }
         }}/>
@@ -322,8 +326,8 @@ const PendingTransaction = () => {
       {/* Footer */}
       <footer
         style={{
-          backgroundColor: '#DADADA',
-          color: 'black',
+          backgroundColor: '#102339',
+          color: 'lightblue',
           textAlign: 'center',
           padding: '10px',
           boxShadow: '0px -4px 10px rgba(0, 0, 0, 0.1)', // Add shadow at the bottom

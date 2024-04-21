@@ -20,31 +20,31 @@ export default function Header() {
 
     return (
         <div>
-            <header style={{ flex: 'none', textAlign: 'center', padding: '20px', width: '97.4%', position: 'relative', background: '#f0f0f0' }}>
-                <div style={{ position: 'absolute', left: '20px', cursor: 'pointer' }} onClick={toggleDrawer}>
-                    <img src={HamburgerIcon} alt="Hamburger Icon" style={{ width: '25px', height: '25px' }} />
-                </div>
+            <header style={{ flex: 'none', textAlign: 'center', padding: '20px', width: '97.4%', position: 'relative', background: '#102339' }}>
+                {/* <div style={{ position: 'absolute', left: '20px', cursor: 'pointer'}} onClick={toggleDrawer}>
+                    <img src={HamburgerIcon} alt="Hamburger Icon" style={{ width: '25px', height: '25px'}} />
+                </div> */}
                 <div style={{ fontWeight: 'bold', fontSize: 'xxx-large', fontFamily: 'monospace' }}>
-                    <a href="/" style={{ textDecoration: 'none', color: '#001b48' }}>Bazi Maar Dashboard </a>
+                    <a href="/" style={{ textDecoration: 'none', color: 'lightblue' }}>Bazi Maar Dashboard </a>
                 </div>
-                <div style={{ position: 'absolute', left: '1400px', cursor: 'pointer', bottom: '30px', border: '1px solid lightblue', borderRadius: '4px' }}>
-                    <Button onClick={handleLogout}>Logout</Button>
+                <div className='logoutBtn' style={{ position: 'absolute', left: '1400px', cursor: 'pointer', bottom: '30px', border: '1px solid #A8FF7A', borderRadius: '4px' }}>
+                    <Button onClick={handleLogout} style={{color:'#A8FF7A'}}>Logout</Button>
                 </div>
             </header>
-            {isDrawerOpen && (
-            <div style={{ position: 'fixed', top: 0, left: 0, width: '300px', height: '100%', background: '#9cb8b8', zIndex: 999 }}>
+            {/* {isDrawerOpen && (
+            <div style={{ position: 'fixed', top: 0, left: 0, width: '300px', height: '100%', background: '#102339', zIndex: 999 }}>
                 <div style={{ textAlign: 'left', padding: '10px' }}>
-                <img src={CrossIcon} alt="Hamburger Icon" style={{ width: '25px', height: '25px', cursor: 'pointer' }} onClick={toggleDrawer}/>
+                <img src={CrossIcon} alt="Hamburger Icon" style={{ width: '25px', height: '25px', cursor: 'pointer', background:'black'}} onClick={toggleDrawer}/>
                 </div>
                 <div style={{ padding: '10px', color: 'black', fontFamily: 'monospace', fontSize: 'x-large' }}>
-                    <a href="/dealers" style={{ textDecoration: 'none', color: 'black' }}>All Dealers</a>
+                    <a href="/dealers" style={{ textDecoration: 'none', color: '#A8FF7A' }}>All Dealers</a>
                 </div>
                 <div style={{ padding: '10px', color: 'black', fontFamily: 'monospace', fontSize: 'x-large' }}>
-                    <a href="/users" style={{ textDecoration: 'none', color: 'black' }}>All Users</a>
+                    <a href="/users" style={{ textDecoration: 'none', color: '#A8FF7A' }}>All Users</a>
                 </div>
-                <div style={{ padding: '10px', color: 'black', fontFamily: 'monospace', fontSize: 'x-large' }}>Products</div>
+                <div style={{ padding: '10px', color: '#A8FF7A', fontFamily: 'monospace', fontSize: 'x-large', cursor:'pointer' }}>Products</div>
             </div>
-            )}
+            )} */}
         </div>
     )
 }

@@ -5,6 +5,7 @@ import { IconButton, Drawer, Button, TextField, Dialog, DialogTitle, DialogConte
 import moment from 'moment';
 import { Link, useNavigate } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
+import CrossIcon from '../assets/cross.svg';
 
 const AllUsers = () => {
   const [transactions, setTransactions] = useState([]);
@@ -137,13 +138,13 @@ const AllUsers = () => {
 
   const linkStyle = {
     textDecoration: 'none',
-    color: 'black',
+    color: 'lightblue',
     fontSize: '16px',
     margin: '8px 0',
     display: 'block',
     transition: 'color 0.3s',
-    backgroundColor: '#1F2022',
-    color: 'white',
+    backgroundColor:'#081A30',
+    
   };
 
   linkStyle[':hover'] = {
@@ -154,12 +155,14 @@ const AllUsers = () => {
     <div>
       <header
         style={{
+          backgroundColor: '#102339',
+          color: 'lightblue',
           textAlign: 'center',
-          padding: '20px',
+          padding: '10px',
           display: 'flex',
           alignItems: 'center',
-          background: '#F1F1F1',
-          color: 'black',
+          boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)', // Add shadow
+          zIndex: 1, // Ensure header is on top of other elements
         }}
       >
         <IconButton
@@ -172,24 +175,46 @@ const AllUsers = () => {
           <MenuIcon />
         </IconButton>
         <div style={{ marginLeft: '6in' }}>
-          <h2 style={{ color: 'black' }}>All Users</h2>
+          <h2 style={{ color: 'lightblue' }}>All Users</h2>
         </div>
       </header>
 
       {/* Drawer component */}
 
+      <Drawer 
+      anchor="left"
+      open={isDrawerOpen}
+      onClose={toggleDrawer(false)}
+      // style={{background:'#102339'}}
+    >
+      <div style={{ textAlign: 'left', padding: '10px', background:'#102339',  }}>
+                <img src={CrossIcon} alt="Hamburger Icon" style={{ width: '25px', height: '25px', cursor: 'pointer', background:'white', borderRadius:'17px'}} onClick={toggleDrawer(false)}/>
+                </div>
+      {/* Sidebar content goes here */}
+      <div style={{  height: '100vh',width: '250px', padding: '20px', background: '#102339'}}>
+        {/* List of links in the drawer */}
+        <Link to="/transaction" onClick={() => setDrawerOpen(false)} style={linkStyle}>All Transactions</Link>
+        <Link to="/pending" onClick={() => setDrawerOpen(false)} style={linkStyle}>Pending Requests</Link>
+        <Link to="/approved" onClick={() => setDrawerOpen(false)} style={linkStyle}>Approved Transactions</Link>
+        <Link to="/users" onClick={() => setDrawerOpen(false)} style={linkStyle}>All Users</Link>
+        <Link to="/weeklyUsers" onClick={() => setDrawerOpen(false)} style={linkStyle}>Weekly Users</Link>
+        <Link to="/daily" onClick={() => setDrawerOpen(false)} style={linkStyle}>Daily Transactions</Link>
+        <Link to="/week" onClick={() => setDrawerOpen(false)} style={linkStyle}>Weekly Transactions</Link>
+      </div>
+    </Drawer>
+
       {/* DataGrid component */}
-      <DataGrid
+      <DataGrid style={{background:'#081A30', color: 'lightblue'}}
         rows={data}
         columns={columns}
         pageSize={10}
         rowsPerPageOptions={[5, 10, 20]}
-        autoHeight
-        disableSelectionOnClick
+        // autoHeight
+        // disableSelectionOnClick
       />
 
       {/* Dialog component */}
-      <Dialog open={openModal} onClose={handleCloseModal}>
+      <Dialog open={openModal} onClose={handleCloseModal} style={{background:'#081A30', color: 'lightblue'}}>
         <DialogTitle>Add/Deduct Money</DialogTitle>
         <DialogContent>
           <TextField
@@ -212,6 +237,7 @@ const AllUsers = () => {
           </Button>
         </DialogActions>
       </Dialog>
+      
     </div>
   );
 };
