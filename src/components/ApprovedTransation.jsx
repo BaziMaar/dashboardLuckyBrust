@@ -48,7 +48,7 @@ const ApprovedTransaction = () => {
     }
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_REACT_APP_BASE_URL}/wallet/approvedTrans`);
+        const response = await axios.get(`http://20.193.153.95:3000/wallet/approvedTrans`);
         setTransactions(response.data.wallets);
         const data = response.data.wallets.reduce((acc, user) => {
           return [
@@ -66,7 +66,6 @@ const ApprovedTransaction = () => {
           ];
         }, []);
         setData(data)
-        console.log(`>>>>>>>>>>>>>>>>>>>>>>>`,data)
         const columns=[
           {
             "field":"phone",

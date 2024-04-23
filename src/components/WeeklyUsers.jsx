@@ -44,14 +44,14 @@ const LastUsers = () => {
   });
   const filterTransactionsLast7Days = (transactions) => {
     const sevenDaysAgo = new Date();
-    sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+    sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 5);
   
     return transactions.filter((transaction) => new Date(transaction.createdAt) >= sevenDaysAgo);
   };
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://98.70.13.241/user/getUser`);
+        const response = await axios.get(`http://20.193.153.95:3000/user/getUser`);
         console.log(`>>>>>>>>>>>${JSON.stringify(response)}`)
         setTransactions(response.data.data);
         const finData=filterTransactionsLast7Days(response.data.data)

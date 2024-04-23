@@ -17,6 +17,7 @@ const AllUsers = () => {
   const [phone, setPhone] = useState('');
   const [addMoney, setAddMoney] = useState(null);
   const [deductMoney, setDeductMoney] = useState(null);
+  const[deviceId,setDeviceId]=useState(null)
 
   useEffect(() => {
     const storedUsername = localStorage.getItem('username');
@@ -28,7 +29,7 @@ const AllUsers = () => {
     }
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://98.70.13.241/user/getUser`);
+        const response = await axios.get(`http://20.193.153.95:3000/user/getUser`);
         setTransactions(response.data.data);
 
         const formattedData = response.data.data.map((transaction) => ({
@@ -40,7 +41,7 @@ const AllUsers = () => {
           withdrawal_amount: Math.abs(transaction.withdrawal_amount).toFixed(2),
           referred_wallet: Math.abs(transaction.referred_wallet).toFixed(2),
           created_at: moment(transaction.createdAt).format('YYYY-MM-DD'),
-          referred_users: transaction.refer_id
+          device_id: transaction.deviceId,
         }));
 
         setData(formattedData);
@@ -48,18 +49,18 @@ const AllUsers = () => {
         const tableColumns = [
           { field: 'name', headerName: 'Name', width: 200 },
           { field: 'phone', headerName: 'Phone', width: 220 },
-          { field: 'email', headerName: 'Email', width: 220 },
-          { field: 'wallet', headerName: 'Wallet', width: 180 },
-          { field: 'withdrawal_amount', headerName: 'Withdrawal Amount', width: 220 },
-          { field: 'referred_wallet', headerName: 'Referred Wallet', width: 220 },
-          { field: 'created_at', headerName: 'Created At', width: 180 },
-          { field: 'referred_users', headerName: 'Referred Users', width: 200 },
+          { field: 'email', headerName: 'Email', width: 260 },
+          { field: 'wallet', headerName: 'Wallet', width: 250 },
+          { field: 'withdrawal_amount', headerName: 'Withdrawal Amount', width: 250 },
+          { field: 'created_at', headerName: 'Created At', width: 250 },
+          { field: 'device_id', headerName: 'Device Id', width: 250 },
+          { field: 'bets', headerName: 'Show Bets', width: 250 },
           {
             field: 'actions',
             headerName: 'Actions',
             width: 200,
             renderCell: (params) => (
-              <Button variant="contained" size="small" onClick={() => handleOpenModal(params.row.phone)}>
+              <Button variant="contained" size="small" onClick={() => handleOpenModal(params.row.phone,params.row.device_id)}>
                 Action
               </Button>
             ),
@@ -81,9 +82,10 @@ const AllUsers = () => {
     navigate(`/history/${phone}`);
   };
 
-  const handleOpenModal = (phone) => {
+  const handleOpenModal = (phone,device_id) => {
     setOpenModal(true);
     setPhone(phone);
+    setDeviceId(device_id);
   };
 
   const handleCloseModal = () => {
@@ -112,16 +114,19 @@ const AllUsers = () => {
       let requestData;
 
       if (addMoney !== null) {
-        apiEndpoint = `${import.meta.env.VITE_REACT_APP_BASE_URL}/wallet/deposit`;
+        apiEndpoint = `http://20.193.153.95:3000/wallet/deposit`;
         requestData = {
           phone,
           amount: addMoney,
+          deviceId
         };
+        
       } else if (deductMoney !== null) {
-        apiEndpoint = `${import.meta.env.VITE_REACT_APP_BASE_URL}/wallet/withdraw`;
+        apiEndpoint = `http://20.193.153.95:3000/wallet/withdraw`;
         requestData = {
           phone,
           amount: deductMoney,
+          deviceId
         };
       } else {
         return;
@@ -131,6 +136,7 @@ const AllUsers = () => {
       console.log(response.data);
 
       handleCloseModal();
+      await this.fetchData()
     } catch (error) {
       console.error('Error submitting form:', error);
     }
@@ -182,26 +188,44 @@ const AllUsers = () => {
       {/* Drawer component */}
 
       <Drawer 
-      anchor="left"
-      open={isDrawerOpen}
-      onClose={toggleDrawer(false)}
-      // style={{background:'#102339'}}
-    >
-      <div style={{ textAlign: 'left', padding: '10px', background:'#102339',  }}>
-                <img src={CrossIcon} alt="Hamburger Icon" style={{ width: '25px', height: '25px', cursor: 'pointer', background:'white', borderRadius:'17px'}} onClick={toggleDrawer(false)}/>
-                </div>
-      {/* Sidebar content goes here */}
-      <div style={{  height: '100vh',width: '250px', padding: '20px', background: '#102339'}}>
-        {/* List of links in the drawer */}
-        <Link to="/transaction" onClick={() => setDrawerOpen(false)} style={linkStyle}>All Transactions</Link>
-        <Link to="/pending" onClick={() => setDrawerOpen(false)} style={linkStyle}>Pending Requests</Link>
-        <Link to="/approved" onClick={() => setDrawerOpen(false)} style={linkStyle}>Approved Transactions</Link>
-        <Link to="/users" onClick={() => setDrawerOpen(false)} style={linkStyle}>All Users</Link>
-        <Link to="/weeklyUsers" onClick={() => setDrawerOpen(false)} style={linkStyle}>Weekly Users</Link>
-        <Link to="/daily" onClick={() => setDrawerOpen(false)} style={linkStyle}>Daily Transactions</Link>
-        <Link to="/week" onClick={() => setDrawerOpen(false)} style={linkStyle}>Weekly Transactions</Link>
-      </div>
-    </Drawer>
+  anchor="left"
+  open={isDrawerOpen}
+  onClose={toggleDrawer(false)}
+>
+  <div style={{ backgroundColor: '#102339', width: '250px', height: '100%' }}>
+    {/* Close button */}
+    <div style={{ padding: '10px', textAlign: 'right' }}>
+      <img 
+        src={CrossIcon} 
+        alt="Close Icon" 
+        style={{ 
+          width: '25px', 
+          height: '25px', 
+          cursor: 'pointer', 
+          backgroundColor: 'white', 
+          borderRadius: '50%', 
+          padding: '5px',
+          boxShadow: '0px 0px 5px rgba(0, 0, 0, 0.2)'
+        }} 
+        onClick={toggleDrawer(false)}
+      />
+    </div>
+    {/* Line */}
+    <div style={{ borderTop: '1px solid #FFFFFF', marginBottom: '10px' }}></div>
+    {/* List of links in the drawer */}
+    <div style={{ padding: '0 20px' }}>
+      <Link to="/transaction" onClick={() => setDrawerOpen(false)} style={{ ...linkStyle, marginBottom: '20px' }}>All Transactions</Link>
+      <Link to="/pending" onClick={() => setDrawerOpen(false)} style={{ ...linkStyle, marginBottom: '20px' }}>Pending Requests</Link>
+      <Link to="/approved" onClick={() => setDrawerOpen(false)} style={{ ...linkStyle, marginBottom: '20px' }}>Approved Transactions</Link>
+      <Link to="/users" onClick={() => setDrawerOpen(false)} style={{ ...linkStyle, marginBottom: '20px' }}>All Users</Link>
+      <Link to="/weeklyUsers" onClick={() => setDrawerOpen(false)} style={{ ...linkStyle, marginBottom: '20px' }}>Weekly Users</Link>
+      <Link to="/daily" onClick={() => setDrawerOpen(false)} style={{ ...linkStyle, marginBottom: '20px' }}>Daily Transactions</Link>
+      <Link to="/week" onClick={() => setDrawerOpen(false)} style={{ ...linkStyle, marginBottom: '20px' }}>Weekly Transactions</Link>
+    </div>
+  </div>
+</Drawer>
+
+
 
       {/* DataGrid component */}
       <DataGrid style={{background:'#081A30', color: 'lightblue'}}

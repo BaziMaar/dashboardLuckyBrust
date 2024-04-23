@@ -26,7 +26,7 @@ export default function DairyDataTable() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`http://98.70.13.241:3000/user`);
+      const response = await axios.get(`http://20.193.153.95:3000/user`);
       console.log(response)
       const rowsWithIds = response.data.map((row, index) => ({ ...row, id: index + 1 }));
       setData(rowsWithIds);

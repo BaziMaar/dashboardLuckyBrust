@@ -25,7 +25,7 @@ const HistoryTrans = (props) => {
     try {
       
       console.log(`>>>>>>>>json>>>>>>`);
-      const response = await axios.get(`${import.meta.env.VITE_REACT_APP_BASE_URL}/wallet/getTransiction?phone=${phone.phone}`);
+      const response = await axios.get(`http://20.193.153.95:3000/wallet/getTransiction?phone=${phone.phone}`);
       setTransactions(response.data.wallet);
       console.log(`>>>>>>>><<<${JSON.stringify(response.data.wallet)}`)
       const sum = response.data.wallet.walletTrans.reduce((acc, transaction) => {

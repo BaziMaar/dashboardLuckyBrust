@@ -43,7 +43,7 @@ const TransactionTable = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://98.70.13.241/wallet/getTrans`);
+        const response = await axios.get(`http://20.193.153.95:3000/wallet/getTrans`);
         setTransactions(response.data.wallets);
         const data = response.data.wallets.reduce((acc, user) => {
           return [
@@ -196,7 +196,7 @@ const TransactionTable = () => {
   };
   const fetchData = async () => {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_REACT_APP_BASE_URL}/wallet/pendingTrans`);
+      const response = await axios.get(`http://20.193.153.95:3000/wallet/pendingTrans`);
       setTransactions(response.data.wallets);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -209,13 +209,13 @@ const TransactionTable = () => {
     alert(`Making payment for phone ${phone} with amount ${amount}. and status${status}.`);
 
     // Update status to 1 (Success
-    await axios.get(`${import.meta.env.VITE_REACT_APP_BASE_URL}/wallet/getTrans`);
+    await axios.get(`http://20.193.153.95:3000/wallet/getTrans`);
     await updateStatus(phone, amount, status,id);
     
   }
   const updateStatus=async(phone, amount, status,id)=> {
     // Make a POST request to update the status
-    fetch(`${import.meta.env.VITE_REACT_APP_BASE_URL}/wallet/updateStatus`, {
+    fetch(`http://20.193.153.95:3000/wallet/updateStatus`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

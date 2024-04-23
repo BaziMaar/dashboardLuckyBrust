@@ -25,7 +25,7 @@ export default function Header() {
                     <img src={HamburgerIcon} alt="Hamburger Icon" style={{ width: '25px', height: '25px'}} />
                 </div> */}
                 <div style={{ fontWeight: 'bold', fontSize: 'xxx-large', fontFamily: 'monospace' }}>
-                    <a href="/" style={{ textDecoration: 'none', color: 'lightblue' }}>Bazi Maar Dashboard </a>
+                    <a href="/" style={{ textDecoration: 'none', color: 'lightblue' }}>Lucky Brust Dashboard </a>
                 </div>
                 <div className='logoutBtn' style={{ position: 'absolute', left: '1400px', cursor: 'pointer', bottom: '30px', border: '1px solid #A8FF7A', borderRadius: '4px' }}>
                     <Button onClick={handleLogout} style={{color:'#A8FF7A'}}>Logout</Button>

@@ -40,7 +40,7 @@ export default function ProductDashboard() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`http://local98.70.13.241:3000/products`);
+      const response = await axios.get(`http://20.193.153.95:3000/products`);
       const rowsWithIds = response.data.map((row, index) => ({ ...row, id: index + 1 }));
       setData(rowsWithIds);
     } catch (error) {

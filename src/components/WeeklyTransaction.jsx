@@ -43,7 +43,7 @@ const WeeklyTransactionTable = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://98.70.13.241/wallet/getTrans`);
+        const response = await axios.get(`http://20.193.153.95:3000/wallet/getTrans`);
         const allTransactions = response.data.wallets;
         
         // Get the start and end date of the current week

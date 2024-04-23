@@ -76,19 +76,6 @@ const Home = () => {
               <p>Total Deposit: {totalUsers}</p>
               <p>Total Withdrawl: {totalUsers}</p>
             </StyledCard>
-            <StyledCard onClick={() => goToCardWindow("week")} gradient="linear-gradient(-20deg, #2b5876 0%, #4e4376 100%)">
-              <h2>Weekly Transactions</h2>
-              <p>Weekly Deposit: {totalUsers}</p>
-              <p>Weekly Withdrawal: {dailyUsers}</p>
-            </StyledCard>
-            <StyledCard onClick={() =>goToCardWindow("weeklyUsers")} gradient="linear-gradient(-20deg, #2b5876 0%, #4e4376 100%)">
-              <h2>Weekly Users</h2>
-            </StyledCard>
-          </div>
-          <div style={{ textAlign: 'center', fontFamily: 'monospace', fontSize: 'large', paddingBottom: '20px', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.2)', color: '#333' }}>
-            
-          </div>
-          <div className="dashboard">
             <StyledCard onClick={() => goToCardWindow('approved')} gradient="linear-gradient(-20deg, #2b5876 0%, #4e4376 100%)">
               <h2>Approved Transaction</h2>
               <p>Total : {totalUsers}</p>
@@ -100,51 +87,28 @@ const Home = () => {
               <p>Total Deposit: {totalUsers}</p>
               <p>Total Withdrawl: {totalUsers}</p>
             </StyledCard>
+
+          </div>
+          <div style={{ textAlign: 'center', fontFamily: 'monospace', fontSize: 'large', paddingBottom: '20px', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.2)', color: '#333' }}>
+            
+          </div>
+          <div className="dashboard">
+
+
+            <StyledCard onClick={() => goToCardWindow("week")} gradient="linear-gradient(-20deg, #2b5876 0%, #4e4376 100%)">
+              <h2>Weekly Transactions</h2>
+              <p>Weekly Deposit: {totalUsers}</p>
+              <p>Weekly Withdrawal: {dailyUsers}</p>
+            </StyledCard>
+            <StyledCard onClick={() =>goToCardWindow("weeklyUsers")} gradient="linear-gradient(-20deg, #2b5876 0%, #4e4376 100%)">
+              <h2>Weekly Users</h2>
+            </StyledCard>
             <StyledCard onClick={() => goToCardWindow('daily')} gradient="linear-gradient(-20deg, #2b5876 0%, #4e4376 100%)">
               <h2>Daily</h2>
               <p>Daily Deposit: {totalUsers}</p>
               <p>Daily Withdrawal: {dailyUsers}</p>
             </StyledCard>
-          </div>
-          <div style={{ textAlign: 'center', fontFamily: 'monospace', fontSize: 'large', paddingBottom: '20px', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.2)', color: 'lightblue' }}>
-            <h2>Aviator</h2>
-          </div>
-          <div className="dashboard">
-            <StyledCard onClick={() => goToCardWindow('users')} gradient="linear-gradient(-20deg, #2b5876 0%, #4e4376 100%)">
-              <h2>Main Dashboard</h2>
-              <p>Total : {totalUsers}</p>
-              <p>Weekly Users: {dailyUsers}</p>
-              <p>Daily Users: {dailyUsers}</p>
-            </StyledCard>
-            <StyledCard onClick={() => goToCardWindow('products')} gradient="linear-gradient(-20deg, #2b5876 0%, #4e4376 100%)">
-              <h2>Bet Placed</h2>
-              <p>Total Deposit: {totalUsers}</p>
-              <p>Total Withdrawl: {totalUsers}</p>
-            </StyledCard>
-            <StyledCard onClick={() => console.log("Sub-Dealer clicked")} gradient="linear-gradient(-20deg, #2b5876 0%, #4e4376 100%)">
-              <h2>Winning/Losing Bet</h2>
-              <p>Weekly Deposit: {totalUsers}</p>
-              <p>Weekly Withdrawal: {dailyUsers}</p>
-            </StyledCard>
-          </div>
-          <div style={{ textAlign: 'center', fontFamily: 'monospace', fontSize: 'large', paddingBottom: '20px', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.2)', color: 'lightblue' }}>
-            <h2>Mines</h2>
-          </div>
-          <div className="dashboard">
-            <StyledCard onClick={() => goToCardWindow('users')} gradient="linear-gradient(-20deg, #2b5876 0%, #4e4376 100%)">
-              <h2>Main Dashboard</h2>
-              <p>Total : {totalUsers}</p>
-            </StyledCard>
-            <StyledCard onClick={() => goToCardWindow('products')} gradient="linear-gradient(-20deg, #2b5876 0%, #4e4376 100%)">
-              <h2>Bet Placed</h2>
-            </StyledCard>
-            <StyledCard onClick={() => console.log("Sub-Dealer clicked")} gradient="linear-gradient(-20deg, #2b5876 0%, #4e4376 100%)">
-              <h2>Winning/Losing Bet</h2>
-              <p>Total Winning: {totalUsers}</p>
-              <p>Total Loosing: {dailyUsers}</p>
-            </StyledCard>
-          </div>
-          <div style={{ textAlign: 'center', fontFamily: 'monospace', fontSize: 'large', paddingBottom: '20px', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.2)', color: 'lightblue' }}>
+          </div>          <div style={{ textAlign: 'center', fontFamily: 'monospace', fontSize: 'large', paddingBottom: '20px', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.2)', color: 'lightblue' }}>
             <h2>Spin</h2>
           </div>
           <div className="dashboard">
@@ -153,16 +117,6 @@ const Home = () => {
               <p>Total : {totalUsers}</p>
               <p>Weekly Users: {dailyUsers}</p>
               <p>Daily Users: {dailyUsers}</p>
-            </StyledCard>
-            <StyledCard onClick={() => goToCardWindow('products')} gradient="linear-gradient(-20deg, #2b5876 0%, #4e4376 100%)">
-              <h2>Bet Placed</h2>
-              <p>Total Deposit: {totalUsers}</p>
-              <p>Total Withdrawl: {totalUsers}</p>
-            </StyledCard>
-            <StyledCard onClick={() => console.log("Sub-Dealer clicked")} gradient="linear-gradient(-20deg, #2b5876 0%, #4e4376 100%)">
-              <h2> Winning/Losing Bets</h2>
-              <p>Weekly Deposit: {totalUsers}</p>
-              <p>Weekly Withdrawal: {dailyUsers}</p>
             </StyledCard>
           </div>
 

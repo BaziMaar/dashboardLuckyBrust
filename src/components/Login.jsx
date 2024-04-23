@@ -71,7 +71,7 @@ const Login = () => {
     <div>
 <header style={{ flex: 'none', textAlign: 'center', padding: '20px', width: '97.4%', position: 'relative', background: '#102339' }}>
   <div style={{ fontWeight: 'bold', fontSize: 'xxx-large', fontFamily: 'monospace', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.2)', color: '#333' }}>
-    <a href="/" style={{ textDecoration: 'none', color: 'lightblue' }}>Bazi Maar Dashboard</a>
+    <a href="/" style={{ textDecoration: 'none', color: 'lightblue' }}>Lucky Brust Dashboard</a>
   </div>
 </header>
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh',backgroundColor:'#081A30' }}>
