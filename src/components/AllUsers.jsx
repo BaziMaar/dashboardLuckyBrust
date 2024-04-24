@@ -27,6 +27,9 @@ const AllUsers = () => {
     if (storedUsername !== 'ashu' || storedPassword !== '54321@sHu') {
       window.location.replace('/');
     }
+    const handleBet=(phone)=>{
+      navigate(`/bet/${phone}`)
+    }
     const fetchData = async () => {
       try {
         const response = await axios.get(`http://20.193.153.95:3000/user/getUser`);
@@ -54,7 +57,20 @@ const AllUsers = () => {
           { field: 'withdrawal_amount', headerName: 'Withdrawal Amount', width: 250 },
           { field: 'created_at', headerName: 'Created At', width: 250 },
           { field: 'device_id', headerName: 'Device Id', width: 250 },
-          { field: 'bets', headerName: 'Show Bets', width: 250 },
+          {
+            field: 'betButton',
+            headerName: 'Show Bet',
+            width: 150,
+            renderCell: (params) => (
+                <Button
+                  variant="contained"
+                  size="small"
+                  onClick={() => handleBet(params.row.phone)}
+                >
+                  Bet
+                </Button>
+            ),
+          },
           {
             field: 'actions',
             headerName: 'Actions',

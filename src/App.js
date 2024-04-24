@@ -13,6 +13,7 @@ import WeeklyTransactionTable from './components/WeeklyTransaction';
 import DailyTransactionTable from './components/DailyTransaction';
 import PendingTransaction from './components/PendingTransaction';
 import LastUsers from './components/WeeklyUsers';
+import BetTrans from './components/BetTrans';
 function App() {
   return (
         <Router>
@@ -28,6 +29,7 @@ function App() {
         <Route path="/weeklyUsers" element={<LastUsers/>} />
         <Route path="/products" element={<ProductDashboard/>}/>
         <Route path="/main" element={<MainSpinDashboard/>}/>
+        <Route path="/bet/:phone" element={<BetTrans/>}/>
       </Routes>
     </Router>
   );
